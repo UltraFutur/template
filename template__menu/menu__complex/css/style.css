@@ -1,0 +1,95 @@
+/* -- * \ * /
+Name: Template Menu Complex
+Author: UltraFutur ❤
+Description: Template menu trois volets
+Version: 1.0
+\ * / * -- */
+
+/* Initialize */
+* {margin: 0; padding: 0; box-sizing: border-box;}
+body {font-size: 16px; font-family: sans-serif; font-weight: 400; line-height: 1.2; overflow-x: hidden;}
+
+/* Reset Propriety */
+ul {padding: 0; list-style: none; margin: 0;}
+span, a {display: block;}
+a {text-decoration: none;}
+img, svg {width: 100%; height: auto;}
+button {display: inline-block; padding: 1rem 2rem; border: none; outline: none; cursor: pointer; transition: 250ms ease;}
+
+/* Layout */
+.container {width: 100%; padding: 0 calc(1.5rem * 0.5); margin: 0 auto;}
+.container {max-width: 1400px;}
+
+/* Import Font */
+@font-face {
+    font-family: '';
+    src: url('');
+    font-weight: 400;
+}
+
+/* Header */
+header {display: flex; align-items: center; justify-content: space-between; position: relative;}
+header > a {color: #000; text-transform: uppercase;}
+header .return-back {display: none;}
+header nav.main-navigation {position: fixed; top: 0; left: 0; width: calc(100% / 3); transform: translateX(-100%); transition: 350ms ease;}
+header nav.main-navigation.active {transform: translateX(0);}
+
+/* All Deepth */
+header nav.main-navigation ul {padding: 8rem 0 0 0;}
+header nav.main-navigation ul li a {color: #000; padding: 1rem 2rem; cursor: pointer; transition: 350ms ease;}
+header nav.main-navigation ul li a.active, 
+header nav.main-navigation ul li a:hover {background-color: #FFF; color: #000;}
+
+/* Deepth 1 */
+header nav.main-navigation>ul {background-color: #000; height: 100vh;}
+header nav.main-navigation>ul>li>a {color: #FFF; padding: 1rem 2rem;}
+
+/* Deepth 2 */
+header nav.main-navigation>ul .sub-menu {background-color: #FAFAFA; position: absolute; top: 0; left: 0; height: 100vh; width: 100%; transform: translateX(100%); pointer-events: none; opacity: 0; transition: 350ms ease;}
+header nav.main-navigation>ul .sub-menu>li>a {padding: 1rem 2rem;}
+header nav.main-navigation>ul .sub-menu i {display: none;}
+header nav.main-navigation>ul .sub-menu.active {pointer-events: initial; opacity: 1;}
+header nav.main-navigation>ul>li .sub-menu>li>a.active, 
+header nav.main-navigation>ul>li .sub-menu>li>a:hover {background-color: #000; color: #FFF;}
+
+
+/* Deepth 3 */
+header nav.main-navigation>ul .sub-menu .sub-menu {background-color: #FFF;}
+header nav.main-navigation>ul>li .sub-menu>li>.sub-menu>li>a:hover {background-color: #000; color: #FFF;}
+
+/* Navigation mobile */
+header .mobile-icon {position:relative; z-index: 1000; cursor: pointer; width: 48px; transition: transform 400ms;}
+header .mobile-icon .line {stroke: #000; fill: none; stroke-width: 4; stroke-linecap: round; transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;}
+header .mobile-icon .top {stroke-dasharray: 40 160;}
+header .mobile-icon .middle {stroke-dasharray: 40 142; transform-origin: 50%; transition: transform 400ms;}
+header .mobile-icon .bottom {stroke-dasharray: 40 85; transform-origin: 50%; transition: transform 400ms, stroke-dashoffset 400ms;}
+
+/* Navigation mobile active */
+header .mobile-icon.active {transform: rotate(45deg);}
+header .mobile-icon.active .top {stroke-dashoffset: -64px;}
+header .mobile-icon.active .middle {transform: rotate(90deg);}
+header .mobile-icon.active .bottom {stroke-dashoffset: -64px;}
+
+@keyframes up-rotate { 0% {animation-timing-function: cubic-bezier(0.16, -0.88, 0.97, 0.53); transform: translateY(0px);} 30% {transform-origin: center; animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); transform: translateY(-10px);} 100% {transform-origin: center; transform: translateY(-10px) rotate(45deg) scale(0.9);}}
+@keyframes down-rotate { 0% {animation-timing-function: cubic-bezier(0.16, -0.88, 0.97, 0.53); transform: translateY(0px);} 30% {transform-origin: center; animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); transform: translateY(10px);} 100% {transform-origin: center; transform: translateY(10px) rotate(-45deg) scale(0.9);}}
+@keyframes hide { 29% {opacity: 1; } 30% {opacity: 0;} 100% {opacity: 0;}}
+
+/* Responsive */
+@media screen and (max-width: 1200px){
+    .container {max-width: 1140px;}
+}
+@media screen and (max-width: 992px) {
+    .container {max-width: 960px;}
+}
+@media screen and (max-width: 768px) {
+    .container {max-width: 720px;}
+
+    header nav.main-navigation {width: calc(100%);}
+    header nav.main-navigation>ul .sub-menu.active {pointer-events: initial; opacity: 1; transform: translateX(0);}
+    header nav.main-navigation>ul .sub-menu i {display: block; padding: 1.5rem 2.5rem; position: absolute; top: 72px; left: 0; cursor: pointer;}
+    header .mobile-icon.active .line {stroke: #FFF;}
+    header .return-back {display: block; position: absolute; top: 1rem; left: 1.5rem; width: 24px; cursor: pointer;}
+}
+@media screen and (max-width: 576px) {
+    .container {max-width: 540px;}
+}
